@@ -66,14 +66,18 @@ public class Window {
             y -= 2.0f / (float) a;
         }
 
-
+        Game.init();
         while (!GLFW.glfwWindowShouldClose(window)) {
-            GL33.glUseProgram(Shaders.shaderProgramId);
-
+            // Key input management
             if (GLFW.glfwGetKey(window, GLFW.GLFW_KEY_ESCAPE) == GLFW.GLFW_PRESS)
-                GLFW.glfwSetWindowShouldClose(window, true);
+                GLFW.glfwSetWindowShouldClose(window, true); // Send a shutdown signal...
 
+            // Change the background color
+            GL33.glClearColor(0f, 0f, 0f, 1f);
             GL33.glClear(GL33.GL_COLOR_BUFFER_BIT);
+
+            Game.render();
+            Game.update(window);
 
             for (Integer integer : pozice) {
                 GL33.glBindVertexArray(integer);
