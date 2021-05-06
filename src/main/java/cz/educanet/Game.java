@@ -24,7 +24,7 @@ public class Game {
     private static int triangleVboId;
 
     public static void init() {
-        Shaders.initShaders();
+        GameShaders.initShaders();
 
         triangleVaoId = GL33.glGenVertexArrays();
         triangleVboId = GL33.glGenBuffers();
@@ -44,7 +44,7 @@ public class Game {
     }
 
     public static void render() {
-        GL33.glUseProgram(Shaders.shaderProgramId);
+        GL33.glUseProgram(GameShaders.shaderProgramId);
         GL33.glBindVertexArray(triangleVaoId);
         GL33.glDrawArrays(GL33.GL_TRIANGLES, 0, vertices.length / 3);
     }
