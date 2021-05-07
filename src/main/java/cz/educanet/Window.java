@@ -29,7 +29,6 @@ public class Window {
 
         ArrayList<Integer> pozice = new ArrayList<Integer>();
 
-        // Indices transform and float-ready edit
 
         String[] MazeString = Maze.split("\n");
         String[][] pos3nsfwString = new String[MazeString.length][3];
@@ -44,7 +43,6 @@ public class Window {
             }
         }
 
-        // render for each of array indices
         for (int i = 0; i < 12; i++) {
             float[] tempPos = new float[12];
             tempPos[0] = Float.parseFloat(pos3nsfwString[i][0]); // x1
@@ -63,7 +61,6 @@ public class Window {
             tempPos[10] = Float.parseFloat(pos3nsfwString[i][1]) + Float.parseFloat(pos3nsfwString[i][2]); // y4
             tempPos[11] = 0.0f; // z4
 
-            // System.out.println("Printed: " + pos3nsfwString[i][0] + ", " + pos3nsfwString[i][1] + ", " + pos3nsfwString[i][2]);
 
             Square sqr = new Square();
             sqr.setedges(tempPos);
