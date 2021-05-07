@@ -1,4 +1,4 @@
-package educanet.utils;
+package cz.educanet.utils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -25,5 +25,4 @@ public class FileUtils {
 
         return null;
     }
-
 }
