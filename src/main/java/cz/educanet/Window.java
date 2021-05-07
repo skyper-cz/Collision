@@ -10,6 +10,7 @@ import static cz.educanet.Main.*;
 
 public class Window {
     public static void Okno() throws Exception {
+        boolean collide = false;
         GLFW.glfwInit();
         GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MAJOR, 3);
         GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MINOR, 3);
@@ -77,8 +78,16 @@ public class Window {
             GL33.glClearColor(0f, 0f, 0f, 1f);
             GL33.glClear(GL33.GL_COLOR_BUFFER_BIT);
 
-            Game.render();
-            Game.update(window);
+            if (collide == true) {
+                Game.CollisionRender();
+                Game.update(window);
+            }
+            else {
+                Game.render();
+                Game.update(window);
+            }
+
+
 
             for (Integer integer : pozice) {
                 GL33.glBindVertexArray(integer);
