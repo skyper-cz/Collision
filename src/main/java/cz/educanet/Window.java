@@ -73,14 +73,15 @@ public class Window {
         Game.init();
         while (!GLFW.glfwWindowShouldClose(window)) {
             // Key input management
-            if (GLFW.glfwGetKey(window, GLFW.GLFW_KEY_ESCAPE) == GLFW.GLFW_PRESS)
+            if (GLFW.glfwGetKey(window, GLFW.GLFW_KEY_ESCAPE) == GLFW.GLFW_PRESS) {
                 GLFW.glfwSetWindowShouldClose(window, true); // Send a shutdown signal...
+            }
 
             // Change the background color
             GL33.glClearColor(0f, 0f, 0f, 1f);
             GL33.glClear(GL33.GL_COLOR_BUFFER_BIT);
 
-            if (collide == true) {
+            if (collide) {
                 Game.CollisionRender();
                 Game.update(window);
             }
