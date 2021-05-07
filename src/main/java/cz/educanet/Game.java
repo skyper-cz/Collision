@@ -10,12 +10,12 @@ import java.nio.FloatBuffer;
 public class Game {
 
     private static float[] vertices = {
-            0.025f, 0.025f, 0.0f,
-            0.025f, -0.025f, 0.0f,
-            -0.025f, -0.025f, 0.0f,
-            -0.025f, 0.025f, 0.0f,
-            -0.025f, -0.025f, 0.0f,
-            0.025f, 0.025f, 0.0f,
+            0.4f, 0.4f, 0.0f,
+            0.4f, -0.4f, 0.0f,
+            -0.4f, -0.4f, 0.0f,
+            -0.4f, 0.4f, 0.0f,
+            -0.4f, -0.4f, 0.0f,
+            0.4f, 0.4f, 0.0f,
     };
 
     private static float speed = 0.01f;

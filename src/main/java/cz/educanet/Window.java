@@ -6,20 +6,14 @@ import org.lwjgl.opengl.GL33;
 
 import java.util.ArrayList;
 
-import static cz.educanet.Main.Maze;
-import static cz.educanet.Main.W;
-import static cz.educanet.Main.H;
+import static cz.educanet.Main.*;
 
 public class Window {
     public static void Okno() throws Exception {
-        int a = (int) Math.sqrt(Maze.length());
-
-
-        Maze = Maze.replace("\n", "");
         GLFW.glfwInit();
         GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MAJOR, 3);
         GLFW.glfwWindowHint(GLFW.GLFW_CONTEXT_VERSION_MINOR, 3);
-        long window = GLFW.glfwCreateWindow(W, H, "Maze", 0, 0);
+        long window = GLFW.glfwCreateWindow(W, H, "Collision", 0, 0);
         if (window == 0) {
             GLFW.glfwTerminate();
             throw new Exception("Can't open window");
@@ -35,35 +29,45 @@ public class Window {
 
         ArrayList<Integer> pozice = new ArrayList<Integer>();
 
-        float x = -1.0f;
-        float y = 1.0f;
-        int at = 0;
-        for (int i = 0; i < a; i++) {
-            for (int j = 0; j < a; j++) {
-                System.out.println(i + " , " + j);
-                System.out.println(at);
-                if (Maze.charAt(at) == '1') {
+        // Indices transform and float-ready edit
 
-                    float[] pos = {
-                            x + 2.0f / (float) a, y, 0.0f,
-                            x + 2.0f / (float) a, y - 2.0f / (float) a, 0.0f,
-                            x, y - 2.0f / (float) a, 0.0f,
-                            x, y, 0.0f,
-                    };
+        String[] MazeString = Maze.split("\n");
+        String[][] pos3nsfwString = new String[MazeString.length][3];
 
-                    Square sqr = new Square();
-                    sqr.setedges(pos);
+        for (int i = 0; i < MazeString.length; i++) {
+            pos3nsfwString[i] = MazeString[i].split(";");
+        }
 
-                    pozice.add(sqr.getSquareVaoId());
-
-                    x += 2.0f / (float) a;
-                } else {
-                    x += 2.0f / (float) a;
-                }
-                at++;
+        for (int i = 0; i < pos3nsfwString.length; i++) {
+            for (int j = 0; j < 3; j++) {
+                pos3nsfwString[i][j] += 'f';
             }
-            x = -1.0f;
-            y -= 2.0f / (float) a;
+        }
+
+        // render for each of array indices
+        for (int i = 0; i < 12; i++) {
+            float[] tempPos = new float[12];
+            tempPos[0] = Float.parseFloat(pos3nsfwString[i][0]); // x1
+            tempPos[1] = Float.parseFloat(pos3nsfwString[i][1]); // y1
+            tempPos[2] = 0.0f; // z1
+
+            tempPos[3] = Float.parseFloat(pos3nsfwString[i][0]) + Float.parseFloat(pos3nsfwString[i][2]); // x2
+            tempPos[4] = Float.parseFloat(pos3nsfwString[i][1]); // x2
+            tempPos[5] = 0.0f; // z2
+
+            tempPos[6] = Float.parseFloat(pos3nsfwString[i][0]) + Float.parseFloat(pos3nsfwString[i][2]); // x3
+            tempPos[7] = Float.parseFloat(pos3nsfwString[i][1]) + Float.parseFloat(pos3nsfwString[i][2]); // y3
+            tempPos[8] = 0.0f; // z3
+
+            tempPos[9] = Float.parseFloat(pos3nsfwString[i][0]); // x4
+            tempPos[10] = Float.parseFloat(pos3nsfwString[i][1]) + Float.parseFloat(pos3nsfwString[i][2]); // y4
+            tempPos[11] = 0.0f; // z4
+
+            // System.out.println("Printed: " + pos3nsfwString[i][0] + ", " + pos3nsfwString[i][1] + ", " + pos3nsfwString[i][2]);
+
+            Square sqr = new Square();
+            sqr.setedges(tempPos);
+            pozice.add(sqr.getSquareVaoId());
         }
 
         Game.init();
