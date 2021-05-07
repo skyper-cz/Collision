@@ -23,10 +23,11 @@ public class Main {
 
     public static int W;
     public static int H;
+    public static boolean collide = false;
 
 
     public static void main(String[] args) throws Exception {
-        Scanner sc = new Scanner(System.in);
+
         Scanner sc1 = new Scanner(System.in);
         Scanner sc2 = new Scanner(System.in);
         //Ano je to možná zbytečné, ale mě to jinak furt padalo.

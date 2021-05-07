@@ -7,6 +7,8 @@ import org.lwjgl.system.MemoryUtil;
 
 import java.nio.FloatBuffer;
 
+import static cz.educanet.Main.collide;
+
 public class Game {
 
     private static float[] vertices = {
@@ -73,6 +75,18 @@ public class Game {
         if (GLFW.glfwGetKey(window, GLFW.GLFW_KEY_S) == GLFW.GLFW_PRESS) {
             move(1, -1);
             sendToGPU();
+        }
+        if (GLFW.glfwGetKey(window, GLFW.GLFW_KEY_Q) == GLFW.GLFW_PRESS) {
+            if (collide == false){
+                collide = true;
+            }
+
+
+        }
+        if (GLFW.glfwGetKey(window, GLFW.GLFW_KEY_E) == GLFW.GLFW_PRESS) {
+            if (collide == true){
+                collide = false;
+            }
         }
     }
 

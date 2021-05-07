@@ -4,9 +4,9 @@ cz/educanet/GameShaders.java
  cz.educanet.GameShaders
 cz/educanet/Square.java
  cz.educanet.Square
-cz/educanet/Window.java
- cz.educanet.Window
 cz/educanet/Main.java
  cz.educanet.Main
+cz/educanet/Window.java
+ cz.educanet.Window
 cz/educanet/Game.java
  cz.educanet.Game
