@@ -1,5 +1,6 @@
 package cz.educanet;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 import static cz.educanet.Window.Okno;
@@ -20,10 +21,10 @@ public class Main {
                     "-0.19999999;0.6;0.4";
 
 
-
     public static int W;
     public static int H;
-    public static boolean collide = false;
+    public static ArrayList<Player> squares = new ArrayList<Player>();
+
 
 
     public static void main(String[] args) throws Exception {
