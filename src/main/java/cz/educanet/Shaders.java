@@ -16,11 +16,13 @@ public class Shaders {
         vertexShaderId = GL33.glCreateShader(GL33.GL_VERTEX_SHADER);
         fragmentShaderId = GL33.glCreateShader(GL33.GL_FRAGMENT_SHADER);
 
+        assert vertexShaderSource != null;
         GL33.glShaderSource(vertexShaderId, vertexShaderSource);
         GL33.glCompileShader(vertexShaderId);
 
         System.out.println(GL33.glGetShaderInfoLog(vertexShaderId));
 
+        assert fragmentShaderSource != null;
         GL33.glShaderSource(fragmentShaderId, fragmentShaderSource);
         GL33.glCompileShader(fragmentShaderId);
 

@@ -20,13 +20,13 @@ public class Player {
     public FloatBuffer matrixFloatBuffer;
     public int squareVaoId;
     public int squareVboId;
-    private int squareColorId;
+    private final int squareColorId;
     public float[] green;
     public float[] red;
-    private FloatBuffer cfb;
+    private final FloatBuffer cfb;
     private float x;
     private float y;
-    private float z;
+    private final float z;
 
     public Player(float x, float y, float z) {
         this.x = x;
