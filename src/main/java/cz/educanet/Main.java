@@ -31,14 +31,12 @@ public class Main {
     public static void main(String[] args) throws Exception {
 
         Scanner sc1 = new Scanner(System.in);
-        Scanner sc2 = new Scanner(System.in);
-        //Ano je to možná zbytečné, ale mě to jinak furt padalo.
 
         System.out.println("Jak velké má být pole?");
         System.out.println("Výška:");
         W = sc1.nextInt();
         System.out.println("Šířka:");
-        H = sc2.nextInt();
+        H = sc1.nextInt();
 
             Okno();
 
